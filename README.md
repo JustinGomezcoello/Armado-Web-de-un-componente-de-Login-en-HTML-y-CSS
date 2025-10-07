@@ -39,9 +39,14 @@ Open `index.html` in your browser. No build tools or dependencies are required.
   <img src="screenshots/desktop.png" alt="Desktop" width="85%"/>
 </p>
 
+### Author & License
+
+- Author: Justin Gomezcoello
+- License: MIT (feel free to use and modify)
+
 #### Mobile
 <p>
-  <img src="screenshots/mobile.png" alt="Mobile" width="35%"/>
+  <img src="screenshots/mobile.png" alt="Mobile" width="55%"/>
 </p>
 
 
