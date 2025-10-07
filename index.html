@@ -9,8 +9,10 @@
     <title>AdminExpress</title>
   </head>
   <body>
+    <!-- Two column layout : brand on the left, form card on the right -->
     <main class="page">
       <section class="left">
+        <!-- principal name -->
         <div class="brand">AdminExpress</div>
       </section>
 
@@ -21,13 +23,14 @@
             <p class="text">Hey, enter your details to sign in to your account.</p>
           </header>
 
-          <form class="form" method="post" action="#">
+          <!-- fields are for layout - visual design  -->
+          <form class="form" action="#">
             <label class="input-group">
               <span class="label">Email</span>
               <div class="row">
                 <div class="control">
                   <span class="icon" aria-hidden="true">📧</span>
-                  <input id="email" name="email" type="email" placeholder="Enter email" required />
+                  <input id="email" name="email" type="email" placeholder="Enter email" />
                 </div>
               </div>
             </label>
@@ -37,71 +40,37 @@
               <div class="row">
                 <div class="control">
                   <span class="icon" aria-hidden="true">🔒</span>
-                  <input id="password" name="password" type="password" placeholder="Enter password" required />
-                  <button type="button" class="eye" aria-label="Show password" data-target="password">
-                    <!-- eye-off (default) -->
-                    <svg class="off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <input id="password" name="password" type="password" placeholder="Enter password" />
+                  <!-- Static closed eye icon-->
+                  <span class="eye" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M3 3l18 18"/>
                       <path d="M10.58 10.58a2 2 0 102.83 2.83"/>
                       <path d="M9.88 4.14A10.94 10.94 0 0121 12a10.94 10.94 0 01-2.36 3.61"/>
                       <path d="M6.18 6.18A10.94 10.94 0 003 12a10.94 10.94 0 007.12 5.88"/>
                     </svg>
-                    <!-- eye (when visible) -->
-                    <svg class="on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
+                  </span>
                 </div>
               </div>
               <div class="help">
+                <!-- No functional link -->
                 <a href="#" class="link small muted">Forgot password?</a>
               </div>
             </label>
 
-            <button class="btn primary" type="submit">Sign In</button>
+            <!-- Button -->
+            <button class="btn primary" type="button">Sign In</button>
           </form>
 
           <footer class="card-foot mobile-auth">
             <span>Don't have an account?</span>
+            <!-- No functional link  -->
             <a href="#" class="link">Sign Up</a>
           </footer>
         </div>
       </section>
     </main>
-    <script>
-      (function() {
-        var toggles = document.querySelectorAll('.eye');
-        toggles.forEach(function(btn){
-          btn.addEventListener('click', function(){
-            var id = btn.getAttribute('data-target');
-            var input = document.getElementById(id);
-            if (!input) return;
-            var isPwd = input.type === 'password';
-            input.type = isPwd ? 'text' : 'password';
-            btn.classList.toggle('show', isPwd);
-            btn.setAttribute('aria-label', isPwd ? 'Hide password' : 'Show password');
-          });
-        });
-
-        // Mobile-only placeholder swap
-        var email = document.getElementById('email');
-        var pass = document.getElementById('password');
-        function applyPlaceholders() {
-          var isMobile = window.matchMedia('(max-width: 768px)').matches;
-          if (!email || !pass) return;
-          if (isMobile) {
-            email.setAttribute('placeholder', 'Email');
-            pass.setAttribute('placeholder', 'Password');
-          } else {
-            email.setAttribute('placeholder', 'Enter email');
-            pass.setAttribute('placeholder', 'Enter password');
-          }
-        }
-        applyPlaceholders();
-        window.addEventListener('resize', applyPlaceholders);
-      })();
-    </script>
+    
   </body>
 </html>
 
