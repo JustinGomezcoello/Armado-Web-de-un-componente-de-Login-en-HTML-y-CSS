@@ -1,0 +1,186 @@
+/*
+  AdminExpress Sign In
+  - Uses CSS Grid for page layout
+  - Flexbox for form controls
+  - Media Queries for responsiveness
+*/
+
+:root {
+  --brand: #0e5bd8;
+  --brand-600: #0a47a8;
+  --bg: #f3f5f9;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --input: #ffffff; /* white fields */
+  --input-border: #e6ecf5;
+  --ring: #d7e3ff;
+  --shadow: 0 10px 25px rgba(2, 8, 23, 0.08);
+  --radius: 14px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: linear-gradient(135deg, #0a59cf 0%, #0671ff 40%, #0a59cf 100%) fixed;
+}
+
+/* Grid layout: left hero, right content */
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.left {
+  display: grid;
+  place-items: center;
+  background: var(--brand);
+  color: #fff;
+}
+
+.brand {
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.right {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  padding: clamp(24px, 5vw, 60px);
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(255,255,255,0.65), rgba(255,255,255,0) 60%),
+    var(--bg);
+}
+
+.card {
+  width: min(560px, 88vw);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.card-head { margin-bottom: 18px; }
+.title { font-size: clamp(22px, 2.2vw, 28px); font-weight: 700; }
+.text { color: var(--muted); margin-top: 8px; font-size: 0.95rem; }
+
+.form { display: grid; gap: 18px; margin-top: 10px; }
+
+.input-group { display: grid; gap: 8px; }
+.label { font-size: 0.9rem; font-weight: 600; color: #1f2937; }
+.row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; }
+.help { display: flex; justify-content: flex-end; margin-top: 6px; }
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--input);
+  border-radius: 999px;
+  padding: 12px 16px;
+  border: 2px solid var(--input-border);
+}
+
+.icon { opacity: 0.7; }
+
+.control:focus-within {
+  background: #fff;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px rgba(46, 106, 255, 0.08);
+}
+
+.input-group input {
+  flex: 1;
+  font: inherit;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  min-width: 0;
+}
+
+.eye {
+  margin-left: 6px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.eye svg { width: 20px; height: 20px; stroke: #9aa3b2; }
+.eye .on { display: none; }
+.eye.show .on { display: block; }
+.eye.show .off { display: none; }
+
+.input-group button:focus { outline: 2px solid var(--ring); }
+
+.btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 13px 24px;
+}
+
+.primary {
+  background: var(--brand);
+  color: #fff;
+  width: 160px;
+  justify-self: start;
+}
+.primary:hover { background: var(--brand-600); }
+
+.card-foot {
+  margin-top: 18px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+}
+
+.link { color: var(--brand); text-decoration: none; font-weight: 600; }
+.muted { color: #6b83b6; font-weight: 600; text-decoration: none; }
+.link:hover { text-decoration: underline; }
+
+/* Hidden by default: only appears on mobile */
+.mobile-auth { display: none; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .page { grid-template-columns: 0.9fr 1.4fr; }
+}
+
+/* Mobile: collapse to single column */
+@media (max-width: 768px) {
+  body { background: var(--bg); }
+  .page {
+    grid-template-columns: 1fr;
+  }
+  .left { display: none; }
+  .brand { font-size: 28px; }
+  .right { padding: 20px; }
+  .card { width: min(560px, 94vw); padding: 0; justify-self: center; }
+  .row { grid-template-columns: 1fr auto; }
+  .primary { width: 100%; justify-self: stretch; }
+  .card-foot { justify-content: center; }
+  .mobile-auth { display: flex; gap: 8px; margin-top: 14px; }
+  /* Hide field titles on mobile */
+  .label { display: none; }
+}
+
+/* Very small devices */
+@media (max-width: 380px) {
+  .card { padding: 18px; }
+  .field__control { padding: 10px 12px; }
+}
+
+
